@@ -96,7 +96,8 @@ public class TicketService {
             i++;
             start = end+1;
         }
-        t.setService(service.substring(0, service.length()-2));
+        if (service.length()>=2)
+            t.setService(service.substring(0, service.length()-2));
         return t;
     }
 
@@ -109,6 +110,7 @@ public class TicketService {
     }
 
     public Integer createTicket(String body){
+        System.out.println(body);
         Ticket ticket = this.convert(body);
         return ticketRepository.createTicket(ticket.getPhone(), ticket.getName(), ticket.getPassword(), ticket.getDescription(), ticket.getService());
     }
@@ -121,8 +123,8 @@ public class TicketService {
         return ticketRepository.updateTicket(ticket.getTicketID(), ticket.getPhone(), ticket.getName(), ticket.getPassword(), ticket.getDescription(), ticket.getService());
     }
 
-    public Integer confirmTicket(Ticket ticket) {
-        return ticketRepository.confirmTicket(ticket.getTicketID());
+    public Integer confirmTicket(int id) {
+        return ticketRepository.confirmTicket(id);
     }
 
 

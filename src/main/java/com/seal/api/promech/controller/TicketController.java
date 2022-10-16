@@ -43,9 +43,9 @@ public class TicketController {
             return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
     }
 
-    @DeleteMapping("/ConfirmTicket")
-    public ResponseEntity<?> confirmJO(@ModelAttribute Ticket ticket) {
-        Integer result = ticketService.confirmTicket(ticket);
+    @DeleteMapping("/ConfirmTicket/{id}")
+    public ResponseEntity<?> confirmJO(@PathVariable int id) {
+        Integer result = ticketService.confirmTicket(id);
         if (result == 1)
             return ResponseEntity.ok(HttpStatus.OK);
         else
