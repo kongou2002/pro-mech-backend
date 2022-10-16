@@ -10,7 +10,7 @@ import lombok.*;
 @ToString
 public class Ticket {
     private int ticketID;
-    private int phone;
+    private long phone;
     private String name;
     private String password;
 

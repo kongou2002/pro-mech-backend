@@ -22,7 +22,7 @@ public class TicketEntity {
     private int ticketID;
 
     @Column(name = "Phone")
-    private int phone;
+    private long phone;
 
     @Column(name = "Name")
     private String name;

@@ -64,7 +64,7 @@ public class TicketService {
             i++;
             int j=i;
             while(i<body.length() && body.charAt(i)!='"') i++;
-            t.setPhone(Integer.parseInt(body.substring(j,i)));
+            t.setPhone(Long.parseLong(body.substring(j,i)));
         }
 
 

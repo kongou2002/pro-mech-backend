@@ -12,7 +12,7 @@ import java.util.List;
 public interface TicketRepository extends JpaRepository<TicketEntity, Integer> {
 
     @Query(value = "SELECT * FROM Ticket WHERE Phone = :phone", nativeQuery = true)
-    TicketEntity getByPhone(int phone);
+    TicketEntity getByPhone(long phone);
 
     @Query(value = "SELECT * FROM Ticket WHERE Status = 1", nativeQuery = true)
     List<TicketEntity> getAll();
@@ -20,12 +20,12 @@ public interface TicketRepository extends JpaRepository<TicketEntity, Integer> {
     @Modifying
     @Query(value = "INSERT INTO Ticket VALUES (:phone, :name, :password, 1, :description, :service)", nativeQuery = true)
     @Transactional
-    int createTicket(int phone, String name, String password, String description, String service);
+    int createTicket(long phone, String name, String password, String description, String service);
 
     @Modifying
     @Query(value ="UPDATE Ticket SET Phone = :phone, Name = :name, Password = :password, Description = :description, Service = :service WHERE TicketID = :ticketID", nativeQuery = true)
     @Transactional
-    Integer updateTicket(int ticketID, int phone, String name, String password, String description, String service);
+    Integer updateTicket(int ticketID, long phone, String name, String password, String description, String service);
 
 
     @Modifying
